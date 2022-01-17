@@ -48,24 +48,7 @@ public class Login extends JFrame {
                 view = new View();
                 view.setVisible(true);
                 view.setDefaultCloseOperation(3);
-                try{
-                    view.clock.setFont(new Font("Montserrat",Font.BOLD,10));
-                    while (true){
-                        Calendar calendar = Calendar.getInstance();
-                        String hour = (calendar.getTime().getHours() > 9)  ? "" + calendar.getTime().getHours() + "" : "0" + calendar.getTime().getHours() ;
-                        String minute = (calendar.getTime().getMinutes() > 9) ?
-                                "" + calendar.getTime().getMinutes() + ""
-                                : "0" + calendar.getTime().getMinutes();
-                        String second = (calendar.getTime().getSeconds() > 9) ?
-                                "" + calendar.getTime().getSeconds() + ""
-                                : "0" + calendar.getTime().getSeconds();
-                        view.clock.setText(hour + ":" + minute + ":" + second);
-                        Thread.sleep(1000);
 
-                    }
-                } catch(InterruptedException ex ) {
-                    ex.printStackTrace();
-                }
             } else {
                 showMessage("ĐĂNG NHẬP THẤT BẠI!");
             }
@@ -214,7 +197,7 @@ public class Login extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel dialogPane;
     private JPanel panel1;
-    public JLabel clock;
+    private JLabel clock;
     private JLabel Forgotpass;
     private JButton btLogin;
     private JButton btExit;

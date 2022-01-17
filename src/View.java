@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.Calendar;
 import javax.swing.*;
+import javax.swing.border.*;
 /*
  * Created by JFormDesigner on Mon Jan 17 15:23:41 ICT 2022
  */
@@ -21,34 +22,50 @@ public class View extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1 = new JPanel();
         label1 = new JLabel();
-        clock = new JLabel();
+        label5 = new JLabel();
         panel3 = new JTabbedPane();
         panel4 = new JPanel();
-        label2 = new JLabel();
         panel5 = new JPanel();
-        label3 = new JLabel();
         panel6 = new JPanel();
-        label4 = new JLabel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("B\u1ec6NH VI\u1ec6N QU\u1ea6N QU\u00c8");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== panel1 ========
         {
             panel1.setBackground(new Color(0, 204, 204));
-            panel1.setLayout(new FlowLayout());
+            panel1.setLayout(null);
 
             //---- label1 ----
-            label1.setText("PH\u1ea6N M\u1ec0M QU\u1ea2N L\u00dd H\u1ed2 S\u01a0 B\u1ec6NH \u00c1N - B\u1ec6NH VI\u1ec6N QU\u1ea6N QU\u00c8");
+            label1.setText("PH\u1ea6N M\u1ec0M QU\u1ea2N L\u00dd H\u1ed2 S\u01a0 B\u1ec6NH \u00c1N");
             label1.setFont(new Font("Montserrat Black", Font.PLAIN, 26));
-            label1.setForeground(Color.white);
+            label1.setIcon(new ImageIcon(getClass().getResource("/img/medical-report.png")));
+            label1.setForeground(new Color(51, 51, 255));
             panel1.add(label1);
+            label1.setBounds(820, 5, 625, label1.getPreferredSize().height);
 
-            //---- clock ----
-            clock.setPreferredSize(new Dimension(200, 50));
-            panel1.add(clock);
+            //---- label5 ----
+            label5.setIcon(new ImageIcon(getClass().getResource("/img/1632393487_728_Hinh-anh-bac-si-dep.jpg")));
+            panel1.add(label5);
+            label5.setBounds(0, 0, 1450, 70);
+
+            {
+                // compute preferred size
+                Dimension preferredSize = new Dimension();
+                for(int i = 0; i < panel1.getComponentCount(); i++) {
+                    Rectangle bounds = panel1.getComponent(i).getBounds();
+                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                }
+                Insets insets = panel1.getInsets();
+                preferredSize.width += insets.right;
+                preferredSize.height += insets.bottom;
+                panel1.setMinimumSize(preferredSize);
+                panel1.setPreferredSize(preferredSize);
+            }
         }
         contentPane.add(panel1, BorderLayout.NORTH);
 
@@ -60,11 +77,6 @@ public class View extends JFrame {
             //======== panel4 ========
             {
                 panel4.setLayout(null);
-
-                //---- label2 ----
-                label2.setText("OK");
-                panel4.add(label2);
-                label2.setBounds(35, 30, 330, 120);
 
                 {
                     // compute preferred size
@@ -87,11 +99,6 @@ public class View extends JFrame {
             {
                 panel5.setLayout(null);
 
-                //---- label3 ----
-                label3.setText("OASODJAOPSDJAS");
-                panel5.add(label3);
-                label3.setBounds(85, 70, 415, 180);
-
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -112,11 +119,6 @@ public class View extends JFrame {
             //======== panel6 ========
             {
                 panel6.setLayout(null);
-
-                //---- label4 ----
-                label4.setText("AAWRDQWOPEUQWOPEUQWES");
-                panel6.add(label4);
-                label4.setBounds(300, 130, 750, 345);
 
                 {
                     // compute preferred size
@@ -144,13 +146,10 @@ public class View extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel1;
     private JLabel label1;
-    public JLabel clock;
+    private JLabel label5;
     private JTabbedPane panel3;
     private JPanel panel4;
-    private JLabel label2;
     private JPanel panel5;
-    private JLabel label3;
     private JPanel panel6;
-    private JLabel label4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -8,18 +8,29 @@ new FormModel {
 			"$sizePolicy": 1
 			"$locationPolicy": 1
 			"defaultCloseOperation": 3
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+			"title": "BỆNH VIỆN QUẦN QUÈ"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1"
 				"background": new java.awt.Color( 0, 204, 204, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"text": "PHẦN MỀM QUẢN LÝ HỒ SƠ BỆNH ÁN - BỆNH VIỆN QUẦN QUÈ"
+					"text": "PHẦN MỀM QUẢN LÝ HỒ SƠ BỆNH ÁN"
 					"font": new java.awt.Font( "Montserrat Black", 0, 26 )
-					"foreground": sfield java.awt.Color white
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/medical-report.png" )
+					"foreground": new java.awt.Color( 51, 51, 255, 255 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 820
+					"y": 5
+					"width": 625
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "clock"
-					"preferredSize": new java.awt.Dimension( 200, 50 )
+					name: "label5"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/1632393487_728_Hinh-anh-bac-si-dep.jpg" )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 0
+					"y": 0
+					"width": 1450
+					"height": 70
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
@@ -30,45 +41,18 @@ new FormModel {
 				"font": new java.awt.Font( "Montserrat SemiBold", 0, 14 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel4"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label2"
-						"text": "OK"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 35
-						"y": 30
-						"width": 330
-						"height": 120
-					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "TRA CỨU THÔNG TIN HỒ SƠ BỆNH ÁN"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/magnifying-glass.png" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel5"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": "OASODJAOPSDJAS"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 85
-						"y": 70
-						"width": 415
-						"height": 180
-					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "CẬP NHẬT HỒ SƠ BỆNH ÁN"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/update.png" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel6"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label4"
-						"text": "AAWRDQWOPEUQWOPEUQWES"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 300
-						"y": 130
-						"width": 750
-						"height": 345
-					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "IN THÔNG TIN BỆNH ÁN"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/printer.png" )
