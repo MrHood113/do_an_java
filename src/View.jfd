@@ -1,0 +1,84 @@
+JFDML JFormDesigner: "7.0.5.2.410" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"$sizePolicy": 1
+			"$locationPolicy": 1
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel1"
+				"background": new java.awt.Color( 0, 204, 204, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "PHẦN MỀM QUẢN LÝ HỒ SƠ BỆNH ÁN - BỆNH VIỆN QUẦN QUÈ"
+					"font": new java.awt.Font( "Montserrat Black", 0, 26 )
+					"foreground": sfield java.awt.Color white
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "clock"
+					"preferredSize": new java.awt.Dimension( 200, 50 )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "panel3"
+				"opaque": true
+				"font": new java.awt.Font( "Montserrat SemiBold", 0, 14 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel4"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "OK"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 35
+						"y": 30
+						"width": 330
+						"height": 120
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "TRA CỨU THÔNG TIN HỒ SƠ BỆNH ÁN"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/magnifying-glass.png" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel5"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "OASODJAOPSDJAS"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 85
+						"y": 70
+						"width": 415
+						"height": 180
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "CẬP NHẬT HỒ SƠ BỆNH ÁN"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/update.png" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel6"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "AAWRDQWOPEUQWOPEUQWES"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 300
+						"y": 130
+						"width": 750
+						"height": 345
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "IN THÔNG TIN BỆNH ÁN"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/printer.png" )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1450, 810 )
+		} )
+	}
+}
