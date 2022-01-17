@@ -84,6 +84,7 @@ public class View extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("B\u1ec6NH VI\u1ec6N QU\u1ea6N QU\u00c8");
         setIconImage(new ImageIcon(getClass().getResource("/img/medical-team.png")).getImage());
+        setResizable(false);
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -147,17 +148,18 @@ public class View extends JFrame {
 
                 //======== scrollPane1 ========
                 {
+                    scrollPane1.setFont(new Font("Montserrat", Font.PLAIN, 14));
 
                     //---- table1 ----
                     table1.setRowHeight(30);
-                    table1.setFont(new Font("Montserrat", Font.PLAIN, 16));
+                    table1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
                     table1.setModel(new DefaultTableModel(
                         new Object[][] {
                             {null, null, "", null, null, null, "", null, null, null, null, null},
                             {null, null, null, null, null, null, null, null, null, null, null, null},
                         },
                         new String[] {
-                            "M\u00e3 b\u1ec7nh nh\u00e2n", "H\u1ecd v\u00e0 t\u00ean", "N\u0103m sinh", "Gi\u1edbi t\u00ednh", "\u0110\u1ecba ch\u1ec9", "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "S\u1ed1 BHYT", "CCCD/CMND", "Ng\u00e0y ti\u1ebfp nh\u1eadn", "M\u00e3 b\u00e1c s\u0129 ph\u1ee5 tr\u00e1ch", "T\u00ecnh tr\u1ea1ng", "M\u00e3 virut"
+                            "M\u00e3 b\u1ec7nh nh\u00e2n", "H\u1ecd v\u00e0 t\u00ean", "N\u0103m sinh", "Gi\u1edbi t\u00ednh", "\u0110\u1ecba ch\u1ec9", "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "S\u1ed1 BHYT", "CCCD/CMND", "Ng\u00e0y ti\u1ebfp nh\u1eadn", "M\u00e3 b\u00e1c s\u0129 ph\u1ee5 tr\u00e1ch", "T\u00ecnh tr\u1ea1ng", "M\u00e3 virus"
                         }
                     ));
                     scrollPane1.setViewportView(table1);
@@ -167,56 +169,79 @@ public class View extends JFrame {
 
                 //======== panel8 ========
                 {
-                    panel8.setBorder(new TitledBorder(null, "Th\u00f4ng tin b\u1ec7nh nh\u00e2n", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+                    panel8.setBorder(new TitledBorder(null, "Th\u00f4ng tin b\u1ec7nh nh\u00e2n", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
+                        new Font("Montserrat Medium", Font.PLAIN, 14)));
                     panel8.setLayout(null);
 
                     //---- label6 ----
                     label6.setText("M\u00e3 b\u1ec7nh nh\u00e2n (*) :");
+                    label6.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label6);
-                    label6.setBounds(10, 20, 100, 30);
+                    label6.setBounds(10, 20, 150, 30);
+
+                    //---- textField1 ----
+                    textField1.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(textField1);
-                    textField1.setBounds(110, 20, 205, 30);
+                    textField1.setBounds(150, 20, 230, 30);
 
                     //---- label7 ----
                     label7.setText("H\u1ecd v\u00e0 t\u00ean (*) :");
+                    label7.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label7);
-                    label7.setBounds(10, 60, 100, 30);
+                    label7.setBounds(10, 60, 120, 30);
+
+                    //---- textField2 ----
+                    textField2.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(textField2);
-                    textField2.setBounds(110, 60, 205, 30);
+                    textField2.setBounds(150, 60, 230, 30);
 
                     //---- label8 ----
                     label8.setText("N\u0103m sinh (*) :");
+                    label8.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label8);
-                    label8.setBounds(10, 100, 100, 30);
+                    label8.setBounds(10, 100, 115, 30);
+
+                    //---- textField3 ----
+                    textField3.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(textField3);
-                    textField3.setBounds(110, 100, 60, 30);
+                    textField3.setBounds(150, 100, 60, 30);
 
                     //---- label9 ----
                     label9.setText("\u0110\u1ecba ch\u1ec9 (*) :");
+                    label9.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label9);
                     label9.setBounds(10, 140, 100, 30);
+
+                    //---- textField4 ----
+                    textField4.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(textField4);
-                    textField4.setBounds(110, 140, 205, 30);
+                    textField4.setBounds(150, 140, 230, 30);
 
                     //---- label10 ----
                     label10.setText("Gi\u1edbi t\u00ednh (*) :");
+                    label10.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label10);
-                    label10.setBounds(180, 100, 70, 30);
+                    label10.setBounds(215, 100, 100, 30);
 
                     //---- comboBox1 ----
                     comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
                         "Nam",
                         "N\u1eef"
                     }));
+                    comboBox1.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(comboBox1);
-                    comboBox1.setBounds(250, 100, 60, 30);
+                    comboBox1.setBounds(310, 100, 70, 30);
 
                     //---- label11 ----
                     label11.setText("S\u1ed1 \u0111i\u1ec7n tho\u1ea1i (*) :");
+                    label11.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(label11);
-                    label11.setBounds(10, 180, 100, 30);
+                    label11.setBounds(10, 180, 135, 30);
+
+                    //---- textField5 ----
+                    textField5.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel8.add(textField5);
-                    textField5.setBounds(110, 180, 205, 30);
+                    textField5.setBounds(150, 180, 230, 30);
 
                     {
                         // compute preferred size
@@ -234,26 +259,35 @@ public class View extends JFrame {
                     }
                 }
                 panel5.add(panel8);
-                panel8.setBounds(475, 15, 335, 225);
+                panel8.setBounds(390, 15, 400, 220);
 
                 //======== panel9 ========
                 {
-                    panel9.setBorder(new TitledBorder(null, "Gi\u1ea5y t\u1edd", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+                    panel9.setBorder(new TitledBorder(null, "Gi\u1ea5y t\u1edd", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
+                        new Font("Montserrat Medium", Font.PLAIN, 14)));
                     panel9.setLayout(null);
 
                     //---- label12 ----
                     label12.setText("S\u1ed1 BHYT :");
+                    label12.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel9.add(label12);
-                    label12.setBounds(15, 15, 100, 30);
+                    label12.setBounds(10, 20, 100, 30);
+
+                    //---- textField6 ----
+                    textField6.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel9.add(textField6);
-                    textField6.setBounds(115, 15, 205, 30);
+                    textField6.setBounds(150, 20, 230, 30);
 
                     //---- label13 ----
                     label13.setText("CCCD/CMND :");
+                    label13.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel9.add(label13);
-                    label13.setBounds(15, 50, 100, 30);
+                    label13.setBounds(10, 55, 100, 30);
+
+                    //---- textField7 ----
+                    textField7.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel9.add(textField7);
-                    textField7.setBounds(115, 50, 205, 30);
+                    textField7.setBounds(150, 55, 230, 30);
 
                     {
                         // compute preferred size
@@ -271,37 +305,43 @@ public class View extends JFrame {
                     }
                 }
                 panel5.add(panel9);
-                panel9.setBounds(475, 240, 335, 90);
+                panel9.setBounds(390, 235, 400, 95);
 
                 //======== panel10 ========
                 {
-                    panel10.setBorder(new TitledBorder(null, "T\u00ecnh tr\u1ea1ng \u0111i\u1ec1u tr\u1ecb", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+                    panel10.setBorder(new TitledBorder(null, "T\u00ecnh tr\u1ea1ng \u0111i\u1ec1u tr\u1ecb", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
+                        new Font("Montserrat Medium", Font.PLAIN, 14)));
                     panel10.setLayout(null);
 
                     //---- label14 ----
                     label14.setText("Ng\u00e0y ti\u1ebfp nh\u1eadn (**) :");
+                    label14.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(label14);
-                    label14.setBounds(10, 20, 110, 30);
+                    label14.setBounds(10, 20, 145, 30);
 
                     //---- textField8 ----
                     textField8.setEditable(false);
+                    textField8.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(textField8);
-                    textField8.setBounds(145, 20, 205, 30);
+                    textField8.setBounds(195, 20, 200, 30);
 
                     //---- label16 ----
-                    label16.setText("M\u00e3 b\u00e1c s\u0129 ph\u1ee5 tr\u00e1ch  (**) :");
+                    label16.setText("M\u00e3 b\u00e1c s\u0129 ph\u1ee5 tr\u00e1ch (**) :");
+                    label16.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(label16);
-                    label16.setBounds(10, 60, 130, 30);
+                    label16.setBounds(10, 60, 185, 30);
 
                     //---- textField9 ----
                     textField9.setEditable(false);
+                    textField9.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(textField9);
-                    textField9.setBounds(145, 60, 205, 30);
+                    textField9.setBounds(195, 60, 200, 30);
 
                     //---- label17 ----
-                    label17.setText("Giai \u0111o\u1ea1n  (*) :");
+                    label17.setText("Giai \u0111o\u1ea1n (*) :");
+                    label17.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(label17);
-                    label17.setBounds(10, 100, 130, 30);
+                    label17.setBounds(10, 100, 110, 30);
 
                     //---- comboBox2 ----
                     comboBox2.setModel(new DefaultComboBoxModel<>(new String[] {
@@ -309,15 +349,20 @@ public class View extends JFrame {
                         "Giai \u0111o\u1ea1n 2 - Nh\u1eb9 v\u00e0 trung b\u00ecnh",
                         "Giai \u0111o\u1ea1n 3 - N\u1eb7ng"
                     }));
+                    comboBox2.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(comboBox2);
-                    comboBox2.setBounds(145, 100, 205, 30);
+                    comboBox2.setBounds(195, 100, 200, 30);
 
                     //---- label18 ----
-                    label18.setText("M\u00e3 virut  (*) :");
+                    label18.setText("M\u00e3 virus (*) :");
+                    label18.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(label18);
                     label18.setBounds(10, 140, 130, 30);
+
+                    //---- comboBox3 ----
+                    comboBox3.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     panel10.add(comboBox3);
-                    comboBox3.setBounds(145, 140, 205, 30);
+                    comboBox3.setBounds(195, 140, 200, 30);
 
                     {
                         // compute preferred size
@@ -335,29 +380,33 @@ public class View extends JFrame {
                     }
                 }
                 panel5.add(panel10);
-                panel10.setBounds(840, 15, 365, 315);
+                panel10.setBounds(795, 15, 410, 315);
 
                 //======== panel11 ========
                 {
                     panel11.setLayout(null);
 
                     //---- button10 ----
-                    button10.setText("TH\u00caM B\u1ec6NH NH\u00c2N");
+                    button10.setText("TH\u00caM");
+                    button10.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
                     panel11.add(button10);
-                    button10.setBounds(0, 0, button10.getPreferredSize().width, 45);
+                    button10.setBounds(0, 0, 120, 45);
 
                     //---- button11 ----
-                    button11.setText("S\u1eecA TH\u00d4NG TIN");
+                    button11.setText("S\u1eecA");
+                    button11.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
                     panel11.add(button11);
                     button11.setBounds(0, 57, 119, 45);
 
                     //---- button12 ----
-                    button12.setText("X\u00d3A TH\u00d4NG TIN");
+                    button12.setText("X\u00d3A");
+                    button12.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
                     panel11.add(button12);
                     button12.setBounds(0, 114, 119, 45);
 
                     //---- button13 ----
                     button13.setText("CLEAR");
+                    button13.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
                     panel11.add(button13);
                     button13.setBounds(0, 260, 119, 45);
 
@@ -383,7 +432,7 @@ public class View extends JFrame {
                 label15.setText("text");
                 label15.setIcon(new ImageIcon(getClass().getResource("/img/medical-report2.png")));
                 panel5.add(label15);
-                label15.setBounds(65, 0, 350, 345);
+                label15.setBounds(0, 5, 350, 345);
 
                 {
                     // compute preferred size
