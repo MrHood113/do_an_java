@@ -7,7 +7,6 @@ public class main {
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             Login login = new Login();
-
             login.setVisible(true);
             login.setDefaultCloseOperation(3);
 

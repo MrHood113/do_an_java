@@ -28,6 +28,7 @@ public class Login extends JFrame {
         System.out.println("OK");
     }
     public View view;
+    String tenbacsi;
     private void dangnhap(ActionEvent e) {
         boolean check = false;
         try{
@@ -35,17 +36,18 @@ public class Login extends JFrame {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan","dangnguyen","123456");
             stm = conn.createStatement();
             ResultSet rst = stm.executeQuery("SELECT * FROM doctors ");
+
             while (rst.next()) {
 
                 if (rst.getString(1).equals(tfUserName.getText()) && rst.getString(2).equals(String.valueOf(password.getPassword()))) {
-
+                    tenbacsi = rst.getString(3);
                     check = true;
                     break;
                 }
             }
             if (check) {
                 setVisible(false);
-                view = new View();
+                view = new View(tenbacsi);
                 view.setVisible(true);
                 view.setDefaultCloseOperation(3);
 
