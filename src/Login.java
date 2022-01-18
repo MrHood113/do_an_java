@@ -28,7 +28,7 @@ public class Login extends JFrame {
         System.out.println("OK");
     }
     public View view;
-    String tenbacsi;
+    String tenbacsi,mabacsi;
     private void dangnhap(ActionEvent e) {
         boolean check = false;
         try{
@@ -41,13 +41,14 @@ public class Login extends JFrame {
 
                 if (rst.getString(1).equals(tfUserName.getText()) && rst.getString(2).equals(String.valueOf(password.getPassword()))) {
                     tenbacsi = rst.getString(3);
+                    mabacsi = rst.getString(1);
                     check = true;
                     break;
                 }
             }
             if (check) {
                 setVisible(false);
-                view = new View(tenbacsi);
+                view = new View(tenbacsi,mabacsi);
                 view.setVisible(true);
                 view.setDefaultCloseOperation(3);
 
@@ -93,7 +94,7 @@ public class Login extends JFrame {
             {
                 panel1.setLayout(null);
                 panel1.add(clock);
-                clock.setBounds(25, 315, 190, 75);
+                clock.setBounds(405, 325, 150, 35);
 
                 //---- Forgotpass ----
                 Forgotpass.setText("Qu\u00ean m\u1eadt kh\u1ea9u?");
@@ -199,7 +200,7 @@ public class Login extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel dialogPane;
     private JPanel panel1;
-    private JLabel clock;
+    public JLabel clock;
     private JLabel Forgotpass;
     private JButton btLogin;
     private JButton btExit;
