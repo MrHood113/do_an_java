@@ -8,7 +8,7 @@ new FormModel {
 			"$sizePolicy": 1
 			"$locationPolicy": 1
 			"defaultCloseOperation": 3
-			"title": "BỆNH VIỆN QUẦN QUÈ"
+			"title": "BỆNH VIỆN "
 			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/img/medical-team.png" )
 			"resizable": false
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -585,6 +585,155 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel7"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "nam"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/doctor.png" )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 190
+						"y": 60
+						"width": 265
+						"height": 265
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "nu"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/nam.png" )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 265
+						"height": 265
+						"x": 190
+						"y": 60
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label20"
+						"text": "Họ và tên"
+						"font": &Font7 new java.awt.Font( "Montserrat Medium", 0, 16 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 545
+						"y": 100
+						"width": 95
+						"height": 55
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lbNameDoctor"
+						"font": &Font8 new java.awt.Font( "Montserrat Medium", 1, 16 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 100
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label22"
+						"text": "Năm sinh"
+						"font": #Font7
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 95
+						"height": 55
+						"x": 545
+						"y": 155
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "namsinhbacsi"
+						"font": #Font8
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 155
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label24"
+						"text": "Trình độ"
+						"font": #Font7
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 95
+						"height": 55
+						"x": 545
+						"y": 220
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "trinhdobacsi"
+						"font": #Font8
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 220
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label26"
+						"text": "Kinh nghiệm"
+						"font": #Font7
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 55
+						"x": 545
+						"y": 285
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "kinhnghiembacsi"
+						"font": #Font8
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 285
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "emailbacsi"
+						"font": #Font8
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 355
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label29"
+						"text": "Email"
+						"font": #Font7
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 55
+						"x": 545
+						"y": 355
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "sodienthoaibacsi"
+						"font": #Font8
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 350
+						"height": 55
+						"x": 680
+						"y": 420
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label31"
+						"text": "Số điện thoại"
+						"font": #Font7
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 55
+						"x": 545
+						"y": 420
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label32"
+						"text": "THÔNG TIN BÁC SĨ"
+						"font": new java.awt.Font( "Montserrat Black", 0, 24 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 540
+						"y": 35
+						"width": 520
+						"height": 65
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "panel12"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 410
+						"y": 415
+						"height": 0
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "THÔNG TIN BÁC SĨ"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/help.png" )
@@ -593,13 +742,13 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 150, 10 )
+			"location": new java.awt.Point( 70, 0 )
 			"size": new java.awt.Dimension( 1410, 840 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
 			name: "buttonGroup1"
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 866 )
+			"location": new java.awt.Point( 0, 876 )
 		} )
 	}
 }

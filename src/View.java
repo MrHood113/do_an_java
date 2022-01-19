@@ -28,10 +28,12 @@ public class View extends JFrame {
     private ResultSet rst;
     private ResultSetMetaData rstmeta;
     private TableRowSorter<TableModel> rowSorter, rowSorter2,rowSorter3;
-    public View(String tenbacsi, String mabacsi) {
+    private String[] thongtinbacsi;
+    public View(String tenbacsi, String mabacsi,String[] thongtinbacsi) {
         initComponents();
         this.tenbacsi = tenbacsi;
         this.mabacsi = mabacsi;
+        this.thongtinbacsi = thongtinbacsi;
         lbtenbacsi.setText("Xin chào, Bác sĩ " + tenbacsi);
 
         reload();
@@ -42,6 +44,7 @@ public class View extends JFrame {
 
         reload_history();
 
+        setThongtinbacsi();
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan", "dangnguyen", "123456");
             stm = conn.createStatement();
@@ -54,6 +57,22 @@ public class View extends JFrame {
         }
     }
 
+    private void setThongtinbacsi(){
+        if (thongtinbacsi[6].equals("Nam")){
+            nam.setVisible(true);
+            nu.setVisible(false);
+        } else {
+            nam.setVisible(false);
+            nu.setVisible(true);
+        }
+        lbNameDoctor.setText(thongtinbacsi[0]);
+        namsinhbacsi.setText(thongtinbacsi[1]);
+        trinhdobacsi.setText(thongtinbacsi[2]);
+        kinhnghiembacsi.setText(thongtinbacsi[3]);
+        emailbacsi.setText(thongtinbacsi[4]);
+        sodienthoaibacsi.setText(thongtinbacsi[5]);
+
+    }
     private void reload() {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan", "dangnguyen", "123456");
@@ -463,6 +482,7 @@ public class View extends JFrame {
             pst.setString(10,tfMaBenhNhan.getText());
             pst.execute();
             reload();
+            reload_full();
             showMessage("Sửa thành công!");
         } catch (Exception ex){
             ex.printStackTrace();
@@ -615,10 +635,26 @@ public class View extends JFrame {
         scrollPane4 = new JScrollPane();
         table4 = new JTable();
         panel7 = new JPanel();
+        nam = new JLabel();
+        nu = new JLabel();
+        label20 = new JLabel();
+        lbNameDoctor = new JLabel();
+        label22 = new JLabel();
+        namsinhbacsi = new JLabel();
+        label24 = new JLabel();
+        trinhdobacsi = new JLabel();
+        label26 = new JLabel();
+        kinhnghiembacsi = new JLabel();
+        emailbacsi = new JLabel();
+        label29 = new JLabel();
+        sodienthoaibacsi = new JLabel();
+        label31 = new JLabel();
+        label32 = new JLabel();
+        panel12 = new JPanel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("B\u1ec6NH VI\u1ec6N QU\u1ea6N QU\u00c8");
+        setTitle("B\u1ec6NH VI\u1ec6N ");
         setIconImage(new ImageIcon(getClass().getResource("/img/medical-team.png")).getImage());
         setResizable(false);
         var contentPane = getContentPane();
@@ -1158,6 +1194,110 @@ public class View extends JFrame {
             {
                 panel7.setLayout(null);
 
+                //---- nam ----
+                nam.setIcon(new ImageIcon(getClass().getResource("/img/doctor.png")));
+                panel7.add(nam);
+                nam.setBounds(190, 60, 265, 265);
+
+                //---- nu ----
+                nu.setIcon(new ImageIcon(getClass().getResource("/img/nam.png")));
+                panel7.add(nu);
+                nu.setBounds(190, 60, 265, 265);
+
+                //---- label20 ----
+                label20.setText("H\u1ecd v\u00e0 t\u00ean");
+                label20.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label20);
+                label20.setBounds(545, 100, 95, 55);
+
+                //---- lbNameDoctor ----
+                lbNameDoctor.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(lbNameDoctor);
+                lbNameDoctor.setBounds(680, 100, 350, 55);
+
+                //---- label22 ----
+                label22.setText("N\u0103m sinh");
+                label22.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label22);
+                label22.setBounds(545, 155, 95, 55);
+
+                //---- namsinhbacsi ----
+                namsinhbacsi.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(namsinhbacsi);
+                namsinhbacsi.setBounds(680, 155, 350, 55);
+
+                //---- label24 ----
+                label24.setText("Tr\u00ecnh \u0111\u1ed9");
+                label24.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label24);
+                label24.setBounds(545, 220, 95, 55);
+
+                //---- trinhdobacsi ----
+                trinhdobacsi.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(trinhdobacsi);
+                trinhdobacsi.setBounds(680, 220, 350, 55);
+
+                //---- label26 ----
+                label26.setText("Kinh nghi\u1ec7m");
+                label26.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label26);
+                label26.setBounds(545, 285, 115, 55);
+
+                //---- kinhnghiembacsi ----
+                kinhnghiembacsi.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(kinhnghiembacsi);
+                kinhnghiembacsi.setBounds(680, 285, 350, 55);
+
+                //---- emailbacsi ----
+                emailbacsi.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(emailbacsi);
+                emailbacsi.setBounds(680, 355, 350, 55);
+
+                //---- label29 ----
+                label29.setText("Email");
+                label29.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label29);
+                label29.setBounds(545, 355, 115, 55);
+
+                //---- sodienthoaibacsi ----
+                sodienthoaibacsi.setFont(new Font("Montserrat Medium", Font.BOLD, 16));
+                panel7.add(sodienthoaibacsi);
+                sodienthoaibacsi.setBounds(680, 420, 350, 55);
+
+                //---- label31 ----
+                label31.setText("S\u1ed1 \u0111i\u1ec7n tho\u1ea1i");
+                label31.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                panel7.add(label31);
+                label31.setBounds(545, 420, 115, 55);
+
+                //---- label32 ----
+                label32.setText("TH\u00d4NG TIN B\u00c1C S\u0128");
+                label32.setFont(new Font("Montserrat Black", Font.PLAIN, 24));
+                panel7.add(label32);
+                label32.setBounds(540, 35, 520, 65);
+
+                //======== panel12 ========
+                {
+                    panel12.setLayout(null);
+
+                    {
+                        // compute preferred size
+                        Dimension preferredSize = new Dimension();
+                        for(int i = 0; i < panel12.getComponentCount(); i++) {
+                            Rectangle bounds = panel12.getComponent(i).getBounds();
+                            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                        }
+                        Insets insets = panel12.getInsets();
+                        preferredSize.width += insets.right;
+                        preferredSize.height += insets.bottom;
+                        panel12.setMinimumSize(preferredSize);
+                        panel12.setPreferredSize(preferredSize);
+                    }
+                }
+                panel7.add(panel12);
+                panel12.setBounds(410, 415, panel12.getPreferredSize().width, 0);
+
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -1254,5 +1394,21 @@ public class View extends JFrame {
     private JScrollPane scrollPane4;
     private JTable table4;
     private JPanel panel7;
+    private JLabel nam;
+    private JLabel nu;
+    private JLabel label20;
+    private JLabel lbNameDoctor;
+    private JLabel label22;
+    private JLabel namsinhbacsi;
+    private JLabel label24;
+    private JLabel trinhdobacsi;
+    private JLabel label26;
+    private JLabel kinhnghiembacsi;
+    private JLabel emailbacsi;
+    private JLabel label29;
+    private JLabel sodienthoaibacsi;
+    private JLabel label31;
+    private JLabel label32;
+    private JPanel panel12;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

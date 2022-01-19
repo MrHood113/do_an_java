@@ -32,6 +32,8 @@ public class Login extends JFrame {
     }
     public View view;
     String tenbacsi,mabacsi,matkhau;
+    String[] thongtinbacsi = new String[0];
+
     private void dangnhap(ActionEvent e) {
         boolean check = false;
         try{
@@ -45,16 +47,16 @@ public class Login extends JFrame {
                     matkhau = rst.getString(2);
                 }
                 if (rst.getString(1).equals(tfUserName.getText()) && rst.getString(2).equals(String.valueOf(password.getPassword()))) {
+                    thongtinbacsi = new String[]{rst.getString(3), rst.getString(4), rst.getString(7), rst.getString(6), rst.getString(8), rst.getString(9),rst.getString(10)};
                     tenbacsi = rst.getString(3);
                     mabacsi = rst.getString(1);
-
                     check = true;
                     break;
                 }
             }
             if (check) {
                 setVisible(false);
-                view = new View(tenbacsi,mabacsi);
+                view = new View(tenbacsi,mabacsi,thongtinbacsi);
                 view.setVisible(true);
                 view.setDefaultCloseOperation(3);
 
