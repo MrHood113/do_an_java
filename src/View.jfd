@@ -80,9 +80,9 @@ new FormModel {
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 10
-						"y": 345
+						"y": 360
 						"width": 1370
-						"height": 315
+						"height": 300
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 						name: "panel8"
@@ -367,6 +367,7 @@ new FormModel {
 							name: "btEdit"
 							"text": "SỬA"
 							"font": #Font3
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "edit", true ) )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 119
 							"height": 45
@@ -376,6 +377,7 @@ new FormModel {
 							name: "btDel"
 							"text": "XÓA"
 							"font": #Font3
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "xoa", true ) )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 119
 							"height": 45
@@ -383,7 +385,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btClear"
-							"text": "CLEAR"
+							"text": "LÀM MỚI"
 							"font": #Font3
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btClear", true ) )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -394,7 +396,9 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btPrint"
-							"text": "PRINT"
+							"text": "IN"
+							"font": new java.awt.Font( "Montserrat Medium", 0, 16 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/printer.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "print", true ) )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 119
@@ -416,9 +420,29 @@ new FormModel {
 						"width": 350
 						"height": 345
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label19"
+						"text": "TÌM KIẾM THÔNG TIN BỆNH NHÂN :"
+						"font": &Font4 new java.awt.Font( "Montserrat Medium", 0, 14 )
+						"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/img/magnifying-glass.png" )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 295
+						"height": 24
+						"x": 390
+						"y": 330
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "search3"
+						"font": &Font5 new java.awt.Font( "Montserrat Medium", 0, 14 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 530
+						"height": 24
+						"x": 670
+						"y": 330
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "CẬP NHẬT HỒ SƠ BỆNH ÁN"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/update.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/medical-checkup (1).png" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel4"
@@ -427,12 +451,23 @@ new FormModel {
 						"border": new javax.swing.border.TitledBorder( null, "Danh sách bệnh nhân đang điều trị", 2, 0, new java.awt.Font( "Montserrat Medium", 0, 14 ), null )
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "table2"
+							"font": new java.awt.Font( "Montserrat Medium", 0, 14 )
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 15
-						"y": 15
-						"width": 655
-						"height": 650
+						"y": 25
+						"width": 1365
+						"height": 350
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/bottomarrow.png" )
+						"text": "Chuyển"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 615
+						"y": 385
+						"width": 170
+						"height": 50
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane3"
@@ -441,47 +476,81 @@ new FormModel {
 							name: "table3"
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 755
-						"y": 15
-						"width": 620
-						"height": 650
+						"width": 1365
+						"height": 240
+						"x": 15
+						"y": 450
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button1"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/right-arrow.png" )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+						name: "panel2"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label2"
+							"text": "Lý do xuất/ chuyển viện :"
+							"font": new java.awt.Font( "Montserrat Medium", 0, 14 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/medical-checkup (1).png" )
+						} )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioButton1"
+							"text": "Đã khỏi bệnh"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							"font": &Font6 new java.awt.Font( "Montserrat Medium", 0, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioButton2"
+							"text": "Chuyển viện"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							"font": #Font6
+						} )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioButton3"
+							"text": "Tử vong"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							"font": #Font6
+						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 675
-						"y": 220
-						"width": 75
-						"height": 40
+						"x": 20
+						"y": 395
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button2"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/arrow-left.png" )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "search"
+						"font": #Font5
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 75
-						"height": 40
-						"x": 675
-						"y": 310
+						"width": 255
+						"x": 1120
+						"y": 0
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button3"
-						"text": "PRINT"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "TÌM KIẾM THÔNG TIN BỆNH NHÂN :"
+						"font": #Font4
+						"icon": #SwingIcon0
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 605
-						"y": 665
+						"x": 835
+						"y": 0
+						"width": 295
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button4"
-						"text": "PRINT"
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "search2"
+						"font": #Font5
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 63
-						"height": 23
-						"x": 1310
-						"y": 665
+						"width": 255
+						"height": 24
+						"x": 1120
+						"y": 425
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "TÌM KIẾM THÔNG TIN BỆNH NHÂN :"
+						"font": #Font4
+						"icon": #SwingIcon0
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 295
+						"height": 24
+						"x": 835
+						"y": 425
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "TRA CỨU THÔNG TIN HỒ SƠ BỆNH ÁN"
+					"title": "XỬ LÝ XUẤT VIỆN"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/magnifying-glass.png" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -507,8 +576,13 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 65, 10 )
+			"location": new java.awt.Point( 95, 10 )
 			"size": new java.awt.Dimension( 1410, 840 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 855 )
 		} )
 	}
 }
