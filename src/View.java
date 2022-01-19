@@ -18,7 +18,7 @@ import javax.swing.table.*;
 
 
 /**
- * @author unknown
+ * @author Đăng Nguyện và Thành Nhân và Mã Lai
  */
 public class View extends JFrame {
     private String tenbacsi, mabacsi;
@@ -27,37 +27,36 @@ public class View extends JFrame {
     private Statement stm;
     private ResultSet rst;
     private ResultSetMetaData rstmeta;
-    private TableRowSorter<TableModel> rowSorter,rowSorter2;
-
-    public View(String tenbacsi,String mabacsi) {
+    private TableRowSorter<TableModel> rowSorter, rowSorter2,rowSorter3;
+    public View(String tenbacsi, String mabacsi) {
         initComponents();
         this.tenbacsi = tenbacsi;
         this.mabacsi = mabacsi;
-        lbtenbacsi.setText("Xin chào, Bác sĩ "+tenbacsi);
+        lbtenbacsi.setText("Xin chào, Bác sĩ " + tenbacsi);
 
         reload();
 
         reload_full();
 
+        reload_xuatvien();
+
         reload_history();
 
-        try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan","dangnguyen","123456");
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan", "dangnguyen", "123456");
             stm = conn.createStatement();
             rst = stm.executeQuery("SELECT * FROM viruts ");
-            while (rst.next()){
+            while (rst.next()) {
                 comboBoxVirus.addItem(rst.getString(1));
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
-
     }
-    private void reload(){
-        try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan","dangnguyen","123456");
+
+    private void reload() {
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan", "dangnguyen", "123456");
             stm = conn.createStatement();
             rst = stm.executeQuery("SELECT * FROM patients ");
             vTitle.clear();
@@ -79,33 +78,33 @@ public class View extends JFrame {
                     "Mã virus"
             };
 
-            while (rst.next()){
+            while (rst.next()) {
                 Vector row = new Vector();
-                if (rst.getString(10).equals(mabacsi)){
-                    for (int i=1;i<=num_columns;i++){
+                if (rst.getString(10).equals(mabacsi)) {
+                    for (int i = 1; i <= num_columns; i++) {
                         row.add(rst.getString(i));
                     }
                     vData.add(row);
                 }
             }
-            for (int i=1;i<=num_columns;i++){
+            for (int i = 1; i <= num_columns; i++) {
                 // vTitle.add(rstmeta.getColumnLabel(i));
-                vTitle.add(title[i-1]);
+                vTitle.add(title[i - 1]);
             }
             rst.close();
-        } catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-        table1.setModel(new DefaultTableModel(vData,vTitle));
+        table1.setModel(new DefaultTableModel(vData, vTitle));
         scrollPane1.setViewportView(table1);
         table1.setRowHeight(50);
 
-        rowSorter2  = new TableRowSorter<>(table1.getModel());
+        rowSorter2 = new TableRowSorter<>(table1.getModel());
         table1.setRowSorter(rowSorter2);
 
-        search3.getDocument().addDocumentListener(new DocumentListener(){
+        search3.getDocument().addDocumentListener(new DocumentListener() {
 
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -136,7 +135,89 @@ public class View extends JFrame {
 
         });
     }
+    private Vector vData_xuatvien = new Vector<>();
+    private Vector vTitle_xuatvien = new Vector();
+    private void reload_xuatvien() {
+        try {
+//          sonn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyhosobenhan", "dangnguyen", "123456");
+//          stm = conn.createStatement();
+            rst = stm.executeQuery("SELECT * FROM danhsachxuatvien ");
+            vTitle_xuatvien.clear();
+            vData_xuatvien.clear();
+            rstmeta = rst.getMetaData();
+            int num_columns = rstmeta.getColumnCount();
+            String[] title = new String[]{
+               //     "Mã bệnh nhân",
+                    "Họ và tên",
+                    "Năm sinh",
+                    "Giới tính",
+                 //   "Địa chỉ",
+                    "Số điện thoại",
+                    "Số BHYT",
+                    "CMND/CCCD",
+                 //   "Ngày tiếp nhận",
+                 //   "Mã bác sĩ",
+                 //   "Giai đoạn",
+                 //   "Mã virus",
+                    "Lý do",
+                    "Ngày xuất/chuyển viện"
+            };
 
+            while (rst.next()) {
+                Vector row = new Vector();
+                    for (int i = 1; i < num_columns; i++) {
+                        row.add(rst.getString(i));
+                    }
+                    vData_xuatvien.add(row);
+
+            }
+            for (int i = 1; i < num_columns; i++) {
+                // vTitle.add(rstmeta.getColumnLabel(i));
+                vTitle_xuatvien.add(title[i - 1]);
+            }
+            rst.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        table3.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        table3.setModel(new DefaultTableModel(vData_xuatvien, vTitle_xuatvien));
+        scrollPane3.setViewportView(table3);
+        table3.setRowHeight(50);
+        rowSorter3  = new TableRowSorter<>(table3.getModel());
+        table3.setRowSorter(rowSorter3);
+
+        search2.getDocument().addDocumentListener(new DocumentListener(){
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = search2.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter3.setRowFilter(null);
+                } else {
+                    rowSorter3.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = search2.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter3.setRowFilter(null);
+                } else {
+                    rowSorter3.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+    }
     private Vector vData_full = new Vector<>();
     private Vector vTitle_full = new Vector();
     private void reload_full(){
@@ -145,17 +226,17 @@ public class View extends JFrame {
             vTitle_full.clear();
             vData_full.clear();
             rstmeta = rst.getMetaData();
-          //  int num_columns = rstmeta.getColumnCount();
+            int num_columns = rstmeta.getColumnCount();
             String[] title = new String[]{
                     "Mã bệnh nhân",
                     "Họ và tên",
                     "Năm sinh",
                     "Giới tính",
-                  //  "Địa chỉ",
-                    //"Số điện thoại",
-                  //  "Số BHYT",
-                 //   "CMND/CCCD",
-                  //  "Ngày tiếp nhận",
+                    "Địa chỉ",
+                    "Số điện thoại",
+                    "Số BHYT",
+                    "CMND/CCCD",
+                    "Ngày tiếp nhận",
                     "Mã bác sĩ",
                     "Giai đoạn",
                     "Mã virus"
@@ -163,17 +244,13 @@ public class View extends JFrame {
 
             while (rst.next()){
                 Vector row = new Vector();
-                row.add(rst.getString(1));
-                row.add(rst.getString(2));
-                row.add(rst.getString(3));
-                row.add(rst.getString(4));
-                row.add(rst.getString(10));
-                row.add(rst.getString(11));
-                row.add(rst.getString(12));
+                for (int i=1;i<=num_columns;i++){
+                    row.add(rst.getString(i));
+                }
                 vData_full.add(row);
 
             }
-            for (int i=1;i<=7;i++){
+            for (int i=1;i<=num_columns;i++){
                 // vTitle.add(rstmeta.getColumnLabel(i));
                 vTitle_full.add(title[i-1]);
             }
@@ -408,6 +485,68 @@ public class View extends JFrame {
         reload_history();
     }
 
+    private void lydokhac(ActionEvent e) {
+
+        tflydokhac.setEnabled(true);
+    }
+
+    private void luachonkhac(ActionEvent e) {
+        tflydokhac.setText("");
+        tflydokhac.setEnabled(false);
+    }
+    private void xuatvien(ActionEvent e) {
+        LocalDateTime current = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatted = current.format(formatter);
+        int row = table2.getSelectedRow();
+        if (row >=0){
+            try{
+                PreparedStatement pst = conn.prepareStatement("INSERT INTO danhsachxuatvien VALUES (?,?,?,?,?,?,?,?,?)");
+                pst.setString(8,formatted);
+                pst.setString(1,table2.getModel().getValueAt(row,1).toString());
+                pst.setString(2,table2.getModel().getValueAt(row,2).toString());
+                pst.setString(3,table2.getModel().getValueAt(row,3).toString());
+                pst.setString(4,table2.getModel().getValueAt(row,5).toString());
+                pst.setString(5,table2.getModel().getValueAt(row,7).toString());
+                pst.setString(6,table2.getModel().getValueAt(row,6).toString());
+                pst.setString(9,table2.getModel().getValueAt(row,0).toString());
+                if (lydo.equals(""))
+                pst.setString(7,tflydokhac.getText());
+                else  pst.setString(7,lydo);
+                pst.execute();
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        try{
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM patients WHERE id=?");
+            pst.setString(1,table2.getModel().getValueAt(row,0).toString());
+            pst.execute();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        reload();
+        reload_full();
+        reload_xuatvien();
+        reload_history();
+    }
+    private String lydo = "" ;
+    private void pick(ActionEvent e) {
+
+        if (radioButton1.isSelected()){
+            lydo = radioButton1.getText();
+        }
+        if (radioButton2.isSelected()){
+            lydo = radioButton2.getText();
+        }
+        if (radioButton3.isSelected()){
+            lydo = radioButton3.getText();
+        }
+        if (radioButton4.isSelected()){
+            lydo = tflydokhac.getText();
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1 = new JPanel();
@@ -458,7 +597,6 @@ public class View extends JFrame {
         panel4 = new JPanel();
         scrollPane2 = new JScrollPane();
         table2 = new JTable();
-        button1 = new JButton();
         scrollPane3 = new JScrollPane();
         table3 = new JTable();
         panel2 = new JPanel();
@@ -466,13 +604,17 @@ public class View extends JFrame {
         radioButton1 = new JRadioButton();
         radioButton2 = new JRadioButton();
         radioButton3 = new JRadioButton();
+        radioButton4 = new JRadioButton();
+        tflydokhac = new JTextField();
         search = new JTextField();
         label3 = new JLabel();
         search2 = new JTextField();
         label4 = new JLabel();
+        button1 = new JButton();
         panel6 = new JPanel();
         scrollPane4 = new JScrollPane();
         table4 = new JTable();
+        panel7 = new JPanel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -500,14 +642,14 @@ public class View extends JFrame {
             lbtenbacsi.setFont(lbtenbacsi.getFont().deriveFont(lbtenbacsi.getFont().getSize() + 4f));
             lbtenbacsi.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             panel1.add(lbtenbacsi);
-            lbtenbacsi.setBounds(875, 20, 360, 34);
+            lbtenbacsi.setBounds(950, 20, 280, 34);
 
             //---- label1 ----
-            label1.setText("PH\u1ea6N M\u1ec0M QU\u1ea2N L\u00dd H\u1ed2 S\u01a0 B\u1ec6NH \u00c1N");
+            label1.setText("PH\u1ea6N M\u1ec0M QU\u1ea2N L\u00dd H\u1ed2 S\u01a0 B\u1ec6NH \u00c1N COVID-19");
             label1.setFont(new Font("Montserrat Black", Font.PLAIN, 36));
             label1.setForeground(new Color(51, 51, 255));
             panel1.add(label1);
-            label1.setBounds(130, 15, 740, label1.getPreferredSize().height);
+            label1.setBounds(20, 15, 950, label1.getPreferredSize().height);
 
             //---- label5 ----
             label5.setIcon(new ImageIcon(getClass().getResource("/img/96292c1b74a02d97da084006a2334189.jpg")));
@@ -776,61 +918,45 @@ public class View extends JFrame {
 
                 //======== panel11 ========
                 {
-                    panel11.setLayout(null);
+                    panel11.setLayout(new GridLayout(5, 1, 10, 10));
 
                     //---- btAdd ----
                     btAdd.setText("TH\u00caM");
-                    btAdd.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                    btAdd.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    btAdd.setIcon(new ImageIcon(getClass().getResource("/img/plus.png")));
                     btAdd.addActionListener(e -> themBenhNhan(e));
                     panel11.add(btAdd);
-                    btAdd.setBounds(0, 0, 120, 45);
 
                     //---- btEdit ----
                     btEdit.setText("S\u1eecA");
-                    btEdit.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                    btEdit.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    btEdit.setIcon(new ImageIcon(getClass().getResource("/img/edit.png")));
                     btEdit.addActionListener(e -> edit(e));
                     panel11.add(btEdit);
-                    btEdit.setBounds(0, 57, 119, 45);
 
                     //---- btDel ----
                     btDel.setText("X\u00d3A");
-                    btDel.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                    btDel.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    btDel.setIcon(new ImageIcon(getClass().getResource("/img/remove.png")));
                     btDel.addActionListener(e -> xoa(e));
                     panel11.add(btDel);
-                    btDel.setBounds(0, 114, 119, 45);
 
                     //---- btClear ----
                     btClear.setText("L\u00c0M M\u1edaI");
-                    btClear.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                    btClear.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    btClear.setIcon(new ImageIcon(getClass().getResource("/img/eraser.png")));
                     btClear.addActionListener(e -> btClear(e));
                     panel11.add(btClear);
-                    btClear.setBounds(0, 260, 119, 45);
 
                     //---- btPrint ----
                     btPrint.setText("IN");
-                    btPrint.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+                    btPrint.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
                     btPrint.setIcon(new ImageIcon(getClass().getResource("/img/printer.png")));
                     btPrint.addActionListener(e -> print(e));
                     panel11.add(btPrint);
-                    btPrint.setBounds(0, 210, 119, 45);
-
-                    {
-                        // compute preferred size
-                        Dimension preferredSize = new Dimension();
-                        for(int i = 0; i < panel11.getComponentCount(); i++) {
-                            Rectangle bounds = panel11.getComponent(i).getBounds();
-                            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                        }
-                        Insets insets = panel11.getInsets();
-                        preferredSize.width += insets.right;
-                        preferredSize.height += insets.bottom;
-                        panel11.setMinimumSize(preferredSize);
-                        panel11.setPreferredSize(preferredSize);
-                    }
                 }
                 panel5.add(panel11);
-                panel11.setBounds(new Rectangle(new Point(1240, 20), panel11.getPreferredSize()));
+                panel11.setBounds(1220, 20, 140, 325);
 
                 //---- label15 ----
                 label15.setText("text");
@@ -883,12 +1009,6 @@ public class View extends JFrame {
                 panel4.add(scrollPane2);
                 scrollPane2.setBounds(15, 25, 1365, 350);
 
-                //---- button1 ----
-                button1.setIcon(new ImageIcon(getClass().getResource("/img/bottomarrow.png")));
-                button1.setText("Chuy\u1ec3n");
-                panel4.add(button1);
-                button1.setBounds(615, 385, 170, 50);
-
                 //======== scrollPane3 ========
                 {
                     scrollPane3.setBorder(new TitledBorder(null, "Danh s\u00e1ch b\u1ec7nh nh\u00e2n xu\u1ea5t/chuy\u1ec3n vi\u1ec7n", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
@@ -911,20 +1031,46 @@ public class View extends JFrame {
                     //---- radioButton1 ----
                     radioButton1.setText("\u0110\u00e3 kh\u1ecfi b\u1ec7nh");
                     radioButton1.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    radioButton1.addActionListener(e -> {
+			luachonkhac(e);
+			pick(e);
+		});
                     panel2.add(radioButton1);
 
                     //---- radioButton2 ----
                     radioButton2.setText("Chuy\u1ec3n vi\u1ec7n");
                     radioButton2.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    radioButton2.addActionListener(e -> {
+			luachonkhac(e);
+			pick(e);
+		});
                     panel2.add(radioButton2);
 
                     //---- radioButton3 ----
                     radioButton3.setText("T\u1eed vong");
                     radioButton3.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    radioButton3.addActionListener(e -> {
+			luachonkhac(e);
+			pick(e);
+		});
                     panel2.add(radioButton3);
+
+                    //---- radioButton4 ----
+                    radioButton4.setText("L\u00fd do kh\u00e1c");
+                    radioButton4.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                    radioButton4.addActionListener(e -> {
+			lydokhac(e);
+			pick(e);
+		});
+                    panel2.add(radioButton4);
+
+                    //---- tflydokhac ----
+                    tflydokhac.setPreferredSize(new Dimension(200, 30));
+                    tflydokhac.setEnabled(false);
+                    panel2.add(tflydokhac);
                 }
                 panel4.add(panel2);
-                panel2.setBounds(new Rectangle(new Point(20, 395), panel2.getPreferredSize()));
+                panel2.setBounds(new Rectangle(new Point(20, 385), panel2.getPreferredSize()));
 
                 //---- search ----
                 search.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
@@ -949,6 +1095,14 @@ public class View extends JFrame {
                 label4.setIcon(new ImageIcon(getClass().getResource("/img/magnifying-glass.png")));
                 panel4.add(label4);
                 label4.setBounds(835, 425, 295, 24);
+
+                //---- button1 ----
+                button1.setIcon(new ImageIcon(getClass().getResource("/img/bottomarrow.png")));
+                button1.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
+                button1.setBackground(new Color(0, 255, 51));
+                button1.addActionListener(e -> xuatvien(e));
+                panel4.add(button1);
+                button1.setBounds(895, 380, 135, 45);
 
                 {
                     // compute preferred size
@@ -999,6 +1153,27 @@ public class View extends JFrame {
                 }
             }
             panel3.addTab("L\u1ecaCH S\u1eec", new ImageIcon(getClass().getResource("/img/history.png")), panel6);
+
+            //======== panel7 ========
+            {
+                panel7.setLayout(null);
+
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel7.getComponentCount(); i++) {
+                        Rectangle bounds = panel7.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel7.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel7.setMinimumSize(preferredSize);
+                    panel7.setPreferredSize(preferredSize);
+                }
+            }
+            panel3.addTab("TH\u00d4NG TIN B\u00c1C S\u0128", new ImageIcon(getClass().getResource("/img/help.png")), panel7);
         }
         contentPane.add(panel3, BorderLayout.CENTER);
         setSize(1410, 840);
@@ -1009,9 +1184,9 @@ public class View extends JFrame {
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         buttonGroup1.add(radioButton3);
+        buttonGroup1.add(radioButton4);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel1;
     private JButton button9;
@@ -1061,7 +1236,6 @@ public class View extends JFrame {
     private JPanel panel4;
     private JScrollPane scrollPane2;
     private JTable table2;
-    private JButton button1;
     private JScrollPane scrollPane3;
     private JTable table3;
     private JPanel panel2;
@@ -1069,12 +1243,16 @@ public class View extends JFrame {
     private JRadioButton radioButton1;
     private JRadioButton radioButton2;
     private JRadioButton radioButton3;
+    private JRadioButton radioButton4;
+    private JTextField tflydokhac;
     private JTextField search;
     private JLabel label3;
     private JTextField search2;
     private JLabel label4;
+    private JButton button1;
     private JPanel panel6;
     private JScrollPane scrollPane4;
     private JTable table4;
+    private JPanel panel7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

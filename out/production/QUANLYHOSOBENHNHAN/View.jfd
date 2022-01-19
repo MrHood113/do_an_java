@@ -32,20 +32,20 @@ new FormModel {
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 					"componentOrientation": sfield java.awt.ComponentOrientation RIGHT_TO_LEFT
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 875
+					"x": 950
 					"y": 20
-					"width": 360
+					"width": 280
 					"height": 34
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"text": "PHẦN MỀM QUẢN LÝ HỒ SƠ BỆNH ÁN"
+					"text": "PHẦN MỀM QUẢN LÝ HỒ SƠ BỆNH ÁN COVID-19"
 					"font": new java.awt.Font( "Montserrat Black", 0, 36 )
 					"foreground": new java.awt.Color( 51, 51, 255, 255 )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 130
+					"x": 20
 					"y": 15
-					"width": 740
+					"width": 950
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label5"
@@ -352,63 +352,53 @@ new FormModel {
 						"width": 410
 						"height": 315
 					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 1
+						"rows": 5
+						"hgap": 10
+						"vgap": 10
+					} ) {
 						name: "panel11"
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btAdd"
 							"text": "THÊM"
-							"font": &Font3 new java.awt.Font( "Montserrat Medium", 0, 16 )
+							"font": &Font3 new java.awt.Font( "Montserrat Medium", 0, 14 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/plus.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "themBenhNhan", true ) )
-						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"height": 45
-							"width": 120
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btEdit"
 							"text": "SỬA"
 							"font": #Font3
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/edit.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "edit", true ) )
-						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"width": 119
-							"height": 45
-							"y": 57
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btDel"
 							"text": "XÓA"
 							"font": #Font3
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/remove.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "xoa", true ) )
-						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"width": 119
-							"height": 45
-							"y": 114
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btClear"
 							"text": "LÀM MỚI"
 							"font": #Font3
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/eraser.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btClear", true ) )
-						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"width": 119
-							"height": 45
-							"y": 260
-							"x": 0
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btPrint"
 							"text": "IN"
-							"font": new java.awt.Font( "Montserrat Medium", 0, 16 )
+							"font": #Font3
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/printer.png" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "print", true ) )
-						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"width": 119
-							"height": 45
-							"x": 0
-							"y": 210
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 1240
+						"x": 1220
 						"y": 20
+						"width": 140
+						"height": 325
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label15"
@@ -459,16 +449,6 @@ new FormModel {
 						"width": 1365
 						"height": 350
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button1"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/bottomarrow.png" )
-						"text": "Chuyển"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 615
-						"y": 385
-						"width": 170
-						"height": 50
-					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane3"
 						"border": new javax.swing.border.TitledBorder( null, "Danh sách bệnh nhân xuất/chuyển viện", 2, 0, new java.awt.Font( "Montserrat Medium", 0, 14 ), null )
@@ -492,24 +472,43 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "radioButton1"
 							"text": "Đã khỏi bệnh"
-							"$buttonGroup": new FormReference( "buttonGroup1" )
 							"font": &Font6 new java.awt.Font( "Montserrat Medium", 0, 14 )
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "luachonkhac", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pick", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "radioButton2"
 							"text": "Chuyển viện"
-							"$buttonGroup": new FormReference( "buttonGroup1" )
 							"font": #Font6
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "luachonkhac", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pick", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "radioButton3"
 							"text": "Tử vong"
-							"$buttonGroup": new FormReference( "buttonGroup1" )
 							"font": #Font6
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "luachonkhac", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pick", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioButton4"
+							"text": "Lý do khác"
+							"font": #Font6
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lydokhac", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pick", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "tflydokhac"
+							"preferredSize": new java.awt.Dimension( 200, 30 )
+							"enabled": false
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 20
-						"y": 395
+						"y": 385
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "search"
@@ -549,6 +548,18 @@ new FormModel {
 						"x": 835
 						"y": 425
 					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/bottomarrow.png" )
+						"font": new java.awt.Font( "Montserrat Medium", 0, 14 )
+						"background": new java.awt.Color( 0, 255, 51, 255 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "xuatvien", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 135
+						"height": 45
+						"x": 895
+						"y": 380
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "XỬ LÝ XUẤT VIỆN"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/magnifying-glass.png" )
@@ -572,17 +583,23 @@ new FormModel {
 					"title": "LỊCH SỬ"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/history.png" )
 				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel7"
+				}, new FormLayoutConstraints( null ) {
+					"title": "THÔNG TIN BÁC SĨ"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/help.png" )
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 95, 10 )
+			"location": new java.awt.Point( 150, 10 )
 			"size": new java.awt.Dimension( 1410, 840 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
 			name: "buttonGroup1"
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 855 )
+			"location": new java.awt.Point( 0, 866 )
 		} )
 	}
 }

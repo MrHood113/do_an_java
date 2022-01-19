@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class main {
@@ -11,6 +13,9 @@ public class main {
             login.setVisible(true);
             login.setDefaultCloseOperation(3);
             try{
+                LocalDateTime current = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                String formatted = current.format(formatter);
                 login.clock.setFont(new Font("Montserrat",Font.BOLD,20));
                 while (true){
                     Calendar calendar = Calendar.getInstance();
@@ -21,7 +26,7 @@ public class main {
                     String second = (calendar.getTime().getSeconds() > 9) ?
                             "" + calendar.getTime().getSeconds() + ""
                             : "0" + calendar.getTime().getSeconds();
-                    login.clock.setText(hour + ":" + minute + ":" + second);
+                    login.clock.setText(formatted + "       "+ hour + ":" + minute + ":" + second);
                     Thread.sleep(1000);
 
                 }
